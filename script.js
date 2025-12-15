@@ -1,9 +1,50 @@
+// ======================
+// LOGIN & LOGOUT SIMPLE
+// ======================
+
+function login(){
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+
+    if(user==="admin" && pass==="1234"){
+        localStorage.setItem("isLogin", "true");
+        alert("Login berhasil 💖");
+        window.location.href="index.html";
+    } else {
+        alert("Username atau password salah 😢");
+    }
+}
+
+function checkLogin(){
+    // Cek status login
+    if(localStorage.getItem("isLogin") !== "true"){
+        window.location.href="login.html";
+    }
+}
+
+function logout(){
+    localStorage.removeItem("isLogin");
+    alert("Logout berhasil 💖");
+    window.location.href="login.html";
+}
+
+// ======================
+// PRODUK
+// ======================
+
 let produk = JSON.parse(localStorage.getItem("produk")) || [];
 
-window.onload = function() {
-    tampilkanProduk();
-    buatBubble(20); // jumlah bubble
-};
+// Pastikan kode hanya dijalankan saat DOM siap
+document.addEventListener("DOMContentLoaded", function() {
+    // Cek login di halaman utama dan gudang
+    if(document.body.id === "page-index" || document.body.id === "page-gudang"){
+        checkLogin();
+        tampilkanProduk();
+    }
+
+    // Buat bubble pink untuk semua halaman
+    buatBubble(20);
+});
 
 // Tambah Produk
 function tambahProduk() {
@@ -32,7 +73,8 @@ function tambahProduk() {
 // Tampilkan Produk
 function tampilkanProduk() {
     let gallery = document.getElementById("gallery");
-    if(!gallery) return;
+    if(!gallery) return; // Pastikan elemen ada
+
     gallery.innerHTML = "";
     produk.forEach((item,index)=>{
         let card=document.createElement("div");
@@ -80,6 +122,7 @@ function resetForm(){
 // 🌸 BUAT BUBBLE PINK
 function buatBubble(jumlah){
     let container = document.querySelector(".bubble-container");
+    if(!container) return;
     for(let i=0;i<jumlah;i++){
         let bubble = document.createElement("div");
         bubble.className="bubble";
@@ -91,9 +134,3 @@ function buatBubble(jumlah){
         container.appendChild(bubble);
     }
 }
-window.onload = function() {
-    buatBubble(20); // bubble untuk login dan halaman utama
-    if(document.getElementById("gallery")) {
-        tampilkanProduk(); // hanya untuk index.html/gudang.html
-    }
-};
