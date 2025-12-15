@@ -1,72 +1,58 @@
-let produk = JSON.parse(localStorage.getItem("produk")) || [];
+et produk = JSON.parse(localStorage.getItem("produk")) || [];
+let editIndex = null;
 
-// tampilkan produk saat halaman dibuka
 window.onload = function () {
     tampilkanProduk();
 };
 
 function tambahProduk() {
     let nama = document.getElementById("namaProduk").value;
+    let kategori = document.getElementById("kategoriProduk").value;
     let harga = document.getElementById("hargaProduk").value;
     let fileInput = document.getElementById("gambarProduk");
     let file = fileInput.files[0];
 
-    if (nama === "" || harga === "" || !file) {
-        alert("Lengkapi data produk dulu 💕");
+    if (nama === "" || kategori === "" || harga === "" || !file) {
+        alert("Lengkapi semua data produk 💕");
         return;
     }
 
     let reader = new FileReader();
     reader.onload = function () {
         let dataProduk = {
-            nama: nama,
-            harga: harga,
+            nama,
+            kategori,
+            harga,
             gambar: reader.result
         };
 
         produk.push(dataProduk);
         localStorage.setItem("produk", JSON.stringify(produk));
 
-        tampilkanProduk();
-
-        // reset form
-        document.getElementById("namaProduk").value = "";
-        document.getElementById("hargaProduk").value = "";
-        fileInput.value = "";
+        alert("Produk disimpan ke gudang 📦");
+        resetForm();
     };
-
     reader.readAsDataURL(file);
 }
 
 function tampilkanProduk() {
     let gallery = document.getElementById("gallery");
+    if (!gallery) return;
+
     gallery.innerHTML = "";
 
     produk.forEach((item, index) => {
         let card = document.createElement("div");
         card.className = "card";
 
-        let img = document.createElement("img");
-        img.src = item.gambar;
-
-        let namaEl = document.createElement("p");
-        namaEl.innerText = item.nama;
-
-        let hargaEl = document.createElement("p");
-        hargaEl.className = "harga";
-        hargaEl.innerText = "Rp " + item.harga;
-
-        let btn = document.createElement("button");
-        btn.innerText = "🗑 Hapus";
-        btn.className = "hapus";
-        btn.onclick = function () {
-            hapusProduk(index);
-        };
-
-        card.appendChild(img);
-        card.appendChild(namaEl);
-        card.appendChild(hargaEl);
-        card.appendChild(btn);
+        card.innerHTML = `
+            <img src="${item.gambar}">
+            <p><b>${item.nama}</b></p>
+            <p>Kategori: ${item.kategori}</p>
+            <p class="harga">Rp ${item.harga}</p>
+            <button onclick="editProduk(${index})">✏ Edit</button>
+            <button class="hapus" onclick="hapusProduk(${index})">🗑 Hapus</button>
+        `;
 
         gallery.appendChild(card);
     });
@@ -76,4 +62,25 @@ function hapusProduk(index) {
     produk.splice(index, 1);
     localStorage.setItem("produk", JSON.stringify(produk));
     tampilkanProduk();
+}
+
+function editProduk(index) {
+    let item = produk[index];
+
+    localStorage.setItem("editIndex", index);
+
+    window.location.href = "index.html";
+
+    setTimeout(() => {
+        document.getElementById("namaProduk").value = item.nama;
+        document.getElementById("kategoriProduk").value = item.kategori;
+        document.getElementById("hargaProduk").value = item.harga;
+    }, 200);
+}
+
+function resetForm() {
+    document.getElementById("namaProduk").value = "";
+    document.getElementById("kategoriProduk").value = "";
+    document.getElementById("hargaProduk").value = "";
+    document.getElementById("gambarProduk").value = "";
 }
