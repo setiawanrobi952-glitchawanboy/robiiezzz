@@ -91,3 +91,9 @@ function buatBubble(jumlah){
         container.appendChild(bubble);
     }
 }
+window.onload = function() {
+    buatBubble(20); // bubble untuk login dan halaman utama
+    if(document.getElementById("gallery")) {
+        tampilkanProduk(); // hanya untuk index.html/gudang.html
+    }
+};
