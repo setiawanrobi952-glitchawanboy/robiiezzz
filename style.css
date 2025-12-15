@@ -1,0 +1,102 @@
+body {
+    font-family: 'Comic Sans MS', Arial, sans-serif;
+    background: linear-gradient(135deg, #ffd6e8, #fff0f7);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    animation: fadeIn 1s ease-in;
+}
+
+/* Animasi masuk */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Judul */
+.judul {
+    color: #ff5fa2;
+    margin-top: 40px;
+    animation: float 2s infinite ease-in-out;
+}
+
+.subtitle {
+    color: #ff85b3;
+}
+
+/* Animasi mengambang */
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/* Login Box */
+.login-box {
+    width: 320px;
+    background: white;
+    padding: 25px;
+    margin: 120px auto;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(255, 105, 180, 0.4);
+}
+
+/* Input */
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 15px;
+    border: 1px solid #ffb6d5;
+}
+
+/* Button */
+button {
+    padding: 12px;
+    width: 100%;
+    background: #ff7eb9;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff5fa2;
+    transform: scale(1.05);
+}
+
+/* Card Produk */
+.card {
+    background: white;
+    width: 350px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(255, 182, 213, 0.6);
+}
+
+/* Gambar */
+#preview {
+    width: 250px;
+    display: none;
+    margin-top: 15px;
+    border-radius: 20px;
+    border: 3px dashed #ff9fcf;
+    animation: pop 0.6s;
+}
+
+/* Animasi gambar */
+@keyframes pop {
+    from { transform: scale(0.7); }
+    to { transform: scale(1); }
+}
+
+/* Footer */
+footer {
+    margin-top: 50px;
+    padding: 10px;
+    color: #ff85b3;
+}
