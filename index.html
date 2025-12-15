@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Digital Marketing</title>
+    <title>Tambah Produk</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>💗 Starting Business Marketing 💗</h1>
-<p>Tambah produk untuk promosi digital ✨</p>
+<h1>💗 Tambah Produk 💗</h1>
 
 <div class="form-produk">
     <input type="text" id="namaProduk" placeholder="Nama Produk">
+    
+    <select id="kategoriProduk">
+        <option value="">Pilih Kategori</option>
+        <option value="Makanan">Makanan</option>
+        <option value="Fashion">Fashion</option>
+        <option value="Aksesoris">Aksesoris</option>
+    </select>
+
     <input type="number" id="hargaProduk" placeholder="Harga Produk">
     <input type="file" id="gambarProduk" accept="image/*">
-    <button onclick="tambahProduk()">➕ Tambah Produk</button>
+
+    <button onclick="tambahProduk()">➕ Simpan ke Gudang</button>
 </div>
 
-<div id="gallery"></div>
+<a href="gudang.html">📦 Lihat Gudang Produk</a>
 
 <script src="script.js"></script>
 </body>
