@@ -2,101 +2,87 @@ body {
     font-family: 'Comic Sans MS', Arial, sans-serif;
     background: linear-gradient(135deg, #ffd6e8, #fff0f7);
     text-align: center;
-    margin: 0;
-    padding: 0;
-    animation: fadeIn 1s ease-in;
 }
 
-/* Animasi masuk */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Judul */
-.judul {
+h1 {
     color: #ff5fa2;
-    margin-top: 40px;
-    animation: float 2s infinite ease-in-out;
+    animation: float 2s infinite;
 }
 
-.subtitle {
-    color: #ff85b3;
-}
-
-/* Animasi mengambang */
 @keyframes float {
     0% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-8px); }
     100% { transform: translateY(0); }
 }
 
-/* Login Box */
-.login-box {
-    width: 320px;
+/* Form */
+.form-produk {
     background: white;
-    padding: 25px;
-    margin: 120px auto;
-    border-radius: 25px;
-    box-shadow: 0 10px 25px rgba(255, 105, 180, 0.4);
+    width: 320px;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px pink;
 }
 
-/* Input */
 input {
     width: 90%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 15px;
+    padding: 8px;
+    margin: 6px;
+    border-radius: 10px;
     border: 1px solid #ffb6d5;
 }
 
 /* Button */
 button {
-    padding: 12px;
-    width: 100%;
     background: #ff7eb9;
     color: white;
     border: none;
-    border-radius: 25px;
+    padding: 10px;
+    width: 95%;
+    border-radius: 20px;
     cursor: pointer;
-    font-size: 16px;
-    transition: 0.3s;
 }
 
 button:hover {
     background: #ff5fa2;
-    transform: scale(1.05);
+}
+
+/* Gallery */
+#gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 /* Card Produk */
 .card {
     background: white;
-    width: 350px;
-    margin: 40px auto;
-    padding: 20px;
-    border-radius: 25px;
-    box-shadow: 0 8px 20px rgba(255, 182, 213, 0.6);
-}
-
-/* Gambar */
-#preview {
-    width: 250px;
-    display: none;
-    margin-top: 15px;
+    width: 200px;
+    margin: 15px;
+    padding: 10px;
     border-radius: 20px;
-    border: 3px dashed #ff9fcf;
-    animation: pop 0.6s;
+    box-shadow: 0 5px 15px pink;
+    animation: pop 0.5s;
 }
 
-/* Animasi gambar */
 @keyframes pop {
-    from { transform: scale(0.7); }
+    from { transform: scale(0.8); }
     to { transform: scale(1); }
 }
 
-/* Footer */
-footer {
-    margin-top: 50px;
-    padding: 10px;
-    color: #ff85b3;
+.card img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.harga {
+    color: #ff5fa2;
+    font-weight: bold;
+}
+
+/* Hapus */
+.hapus {
+    background: #ff9fcf;
+    margin-top: 5px;
 }
