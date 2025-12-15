@@ -4,7 +4,7 @@
     <title>Tambah Produk</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="page-index">
 
 <div class="bubble-container"></div>
 
@@ -22,19 +22,15 @@
 
     <input type="number" id="hargaProduk" placeholder="Harga Produk">
     <input type="file" id="gambarProduk" accept="image/*">
-<button onclick="logout()" style="width:120px; margin-bottom:10px;">🚪 Logout</button>
+
+    <button onclick="logout()" style="width:120px; margin-bottom:10px;">🚪 Logout</button>
     <button onclick="tambahProduk()">➕ Simpan ke Gudang</button>
 </div>
+
+<div id="gallery"></div>
 
 <a href="gudang.html">📦 Lihat Gudang Produk</a>
 
 <script src="script.js"></script>
 </body>
 </html>
-<button onclick="logout()" style="width:120px; margin-bottom:10px;">🚪 Logout</button>
-<body id="page-index">
-<div class="form-produk">
-    ...
-</div>
-
-<div id="gallery"></div>
